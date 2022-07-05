@@ -175,7 +175,7 @@ require('yargs')
                 Logger.error(err.message);
             });
     })
-    .command('compile', 'compile a contract', (yargs) => {
+    .command('compile [files..]', 'compile a contract', (yargs) => {
         yargs.usage('Usage: $0 compile --target [lang] --link --monitor --warnings [cto files] [ergo files]');
         yargs.option('target', {
             describe: 'Target platform (available: es5,es6,cicero,java)',

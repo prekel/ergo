@@ -27,6 +27,10 @@ let mk_position_of_loc_pair filename start_pos end_pos =
     loc_end = mk_position_point_of_loc end_pos; }
 let mk_provenance_of_loc_pair filename start_pos end_pos =
   ErgoCompiler.prov_loc (mk_position_of_loc_pair filename start_pos end_pos)
+
+let mk_provenance_of_loc_pair_fun filename start_pos end_pos comment =
+  ErgoCompiler.prov_func (mk_position_of_loc_pair filename start_pos end_pos) (Util.char_list_of_string comment)
+
 let ergo_system_error msg =
   ESystemError (dummy_provenance,char_list_of_string msg)
 let ergo_parse_error msg filename start_pos end_pos =

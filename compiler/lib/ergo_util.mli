@@ -49,6 +49,9 @@ val string_of_warnings_with_table : (string * string) list -> ewarning list -> s
 (** [mk_provenance_of_loc_pair filename start end] *)
 val mk_provenance_of_loc_pair : string -> Lexing.position -> Lexing.position -> provenance
 
+(** [mk_provenance_of_loc_pair_fun filename start end comment] *)
+val mk_provenance_of_loc_pair_fun : string -> Lexing.position -> Lexing.position -> string -> provenance
+
 (** [get_version msg] *)
 val ergo_version : string
 val get_version : string -> (unit -> unit)

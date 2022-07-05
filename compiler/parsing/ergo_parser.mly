@@ -25,6 +25,12 @@ let mk_provenance
     (end_pos: Lexing.position) : provenance =
     mk_provenance_of_loc_pair !filename start_pos end_pos
 
+let mk_provenance_fun
+    (start_pos: Lexing.position)
+    (end_pos: Lexing.position)
+    comment : provenance =
+    mk_provenance_of_loc_pair_fun !filename start_pos end_pos comment
+
 (* QNames *)
 let relative_name_of_qname qn =
   begin match qn with
@@ -271,7 +277,7 @@ decl:
 | DEFINE CONSTANT vt = identannot EQUAL e = expr
     { ErgoCompiler.dconstant (mk_provenance $startpos $endpos) (fst vt) (snd vt) e }
 | DEFINE FUNCTION fn = ident LPAREN ps = params RPAREN out = outtype fb = fbody
-    { ErgoCompiler.dfunc (mk_provenance $startpos $endpos) fn
+    { ErgoCompiler.dfunc (mk_provenance_fun $startpos $endpos "qwertyQWERTY123") fn
         { function_annot = mk_provenance $startpos $endpos;
           function_sig =
           { type_signature_annot = (mk_provenance $startpos $endpos);
